@@ -32,6 +32,9 @@ If you have an interactive filter tool installed like [fzf], [selecta], or [peco
 set -g FILTER
 ```
 
+## Importing history
+You can import your history from fasd by running the `marlin:import-fasd` command.
+
 ## License
 [MIT][mit] © [sagebind][author] et [al][contributors]
 

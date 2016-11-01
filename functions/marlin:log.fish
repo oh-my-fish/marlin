@@ -9,9 +9,12 @@ function marlin:log -a path -d 'Record usage of a path'
   # Parse existing records, removing the record for the given path and inserting it at the end with an incremented score.
   command awk '
     {
+      # If the current record matches the path we are logging, save it and move it to the end of file.
       if ($2 == ENVIRON["path"]) {
         score = $1;
-      } else {
+      }
+      # Before we pass through this record, check if the path still exists. If not, remove the record.
+      else if (!system("test -d " $2)) {
         print $0;
       }
     }
