@@ -1,6 +1,6 @@
 function marlin:log -a path -d 'Record usage of a path'
   # Canonicalize the path.
-  set -lx path (builtin fish_realpath $path)
+  set -lx path (realpath $path)
 
   # Ensure the history file exists.
   test -f $MARLIN_HISTORY
