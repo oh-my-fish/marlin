@@ -6,4 +6,6 @@ function marlin:pwd-listener --on-variable PWD
   marlin:log $PWD
 end
 
-expand-word -p '^,.*$' -e marlin:complete
+if status --is-interactive
+  expand-word -p '^,.*$' -e marlin:complete
+end
