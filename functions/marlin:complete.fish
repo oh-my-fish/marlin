@@ -5,7 +5,7 @@ function marlin:complete
   set -l expansions (marlin:find $patterns)
 
   if set -q expansions[1]
-    echo -ns $expansions\n
+    echo -ns $expansions\n | string escape
     return 0
   end
 
