@@ -1,7 +1,7 @@
 function marlin:find -d 'Find all directories matching patterns in frecency order'
   echo -ns $argv\n | read -z -l -x marlin_patterns
 
-  command awk '
+  command awk -F'\t' '
     BEGIN {
       # Read search patterns from Fish.
       split(tolower(ENVIRON["marlin_patterns"]), patterns, "\n");
@@ -31,7 +31,7 @@ function marlin:find -d 'Find all directories matching patterns in frecency orde
     END {
       # Print out matching paths in order.
       for (i = 1; i <= NR; i++) {
-        sub(ENVIRON["HOME"], "~", paths[i]);
+        # sub(ENVIRON["HOME"], "~", paths[i]);
         print paths[i];
       }
     }
